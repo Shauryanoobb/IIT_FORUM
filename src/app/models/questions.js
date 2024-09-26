@@ -5,9 +5,9 @@ mongoose.Promise = global.Promise;
 
 const QuestionSchema = new Schema({
     is_anonymous: { type: Boolean, default: false },
-    user_id: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    user_id: { type: Schema.Types.ObjectId, ref: 'User'},
     title: { type: String, required: true },
-    question_body:  { type: String, required: true },
+    question_body:  { type: String, },
     tags: { type: String, enum: ['IIT Bombay', 'IIT Delhi', 'IIT Kanpur', 'IIT Kharagpur', 'IIT Madras', 'IIT Roorkee', 'IIT Indore'], required: true },
     answer: [
         { mentor_id: Schema.Types.ObjectId, text: String }

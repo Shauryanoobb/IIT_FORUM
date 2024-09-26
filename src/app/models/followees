@@ -1,0 +1,16 @@
+const mongoose = require('mongoose');
+const { Schema, model, models } = mongoose;
+
+// Followee Schema - stores the list of users that a particular user follows
+const FolloweeSchema = new Schema({
+  user_id: { type: Schema.Types.ObjectId, ref: 'User', required: true },  // The user who is following others
+  followees: [{
+    user_id: { type: Schema.Types.ObjectId, ref: 'User' }  // Array of users that this user follows
+  }]
+}, { timestamps: true });  // Adds createdAt and updatedAt fields automatically
+
+// Create the Followee model
+const Followee = models.Followee || model("Followee", FolloweeSchema);
+
+// Export the model
+module.exports = Followee;
